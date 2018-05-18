@@ -7,12 +7,21 @@ class ItemProduction(models.Model):
     _description = 'Item Production'
 
     name = fields.Char(string='Item Name')
-    percent_weights = fields.Integer(string='Percent Weights')
     date_start = fields.Date(string='Date Start')
-    component_ids = fields.Many2many('master.component')
+    production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id')
+
 #     value2 = fields.Float(compute="_value_pc", store=True)
 #     description = fields.Text()
 #
 #     @api.depends('value')
 #     def _value_pc(self):
 #         self.value2 = float(self.value) / 100
+
+
+class ItemProductionDetail(models.Model):
+    _name = 'item.production.detail'
+    _description = 'Item Production Detail'
+
+    production_id = fields.Many2one('item.production', ondelete='cascade')
+    percent_weights = fields.Float('Percent Weight')
+    component_ids = fields.Many2one('master.component', 'Component Name')

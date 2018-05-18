@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="simple_manufacture.list">
+      <field name="name">simple_manufacture list</field>
+      <field name="model">simple_manufacture.simple_manufacture</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <record id="item_production_action_window" model="ir.actions.act_window">
+      <field name="name">Item Production</field>
+      <field name="res_model">item.production</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <!--<menuitem id="simple_manufacture_menu_root" name="Manufacture"/>-->
+
+    <!-- menu categories -->
+    <!--<menuitem id="simple_manufacture_menu" name="Manufacture" parent="simple_manufacture_menu_root"/>-->
+    <menuitem id="item_production_menu"
+              name="Item Production"
+              action="item_production_action_window"
+              parent="simple_manufacture_menu"/>
+
+  </data>
+</odoo>
