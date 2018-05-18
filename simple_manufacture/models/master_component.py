@@ -6,8 +6,8 @@ class MasterComponent(models.Model):
     _name = 'master.component'
     _description = 'Master Component'
 
-#     name = fields.Char()
-#     value = fields.Integer()
+    name = fields.Char(string='Component Name')
+    estimation_time = fields.Float(string='Estimation Time')
 #     value2 = fields.Float(compute="_value_pc", store=True)
 #     description = fields.Text()
 #
