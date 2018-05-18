@@ -7,7 +7,9 @@ class ItemProduction(models.Model):
     _description = 'Item Production'
 
     name = fields.Char(string='Item Name')
-    date_start = fields.Date(string='Date Start')
+    date_start = fields.Datetime(string='Date Start')
+    date_finish = fields.Datetime()
+    est_date_finish = fields.Datetime(stored=False)
     production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id')
 
 #     value2 = fields.Float(compute="_value_pc", store=True)

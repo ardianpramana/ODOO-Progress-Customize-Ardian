@@ -7,8 +7,24 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="estimation_time"/>
+          <field name="estimation_time"  string="Estimation Time (Days)"/>
         </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="master_component_view_form" model="ir.ui.view">
+      <field name="name">Master Component</field>
+      <field name="model">master.component</field>
+      <field name="arch" type="xml">
+        <form string="Master Component">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="estimation_time" string="Estimation Time (Days)"/>
+            </group>
+          </sheet>
+        </form>
       </field>
     </record>
 
