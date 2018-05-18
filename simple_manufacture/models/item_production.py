@@ -23,5 +23,5 @@ class ItemProductionDetail(models.Model):
     _description = 'Item Production Detail'
 
     production_id = fields.Many2one('item.production', ondelete='cascade')
-    percent_weights = fields.Float('Percent Weight')
     component_ids = fields.Many2one('master.component', 'Component Name')
+    percent_weights = fields.Float('Percent Weight')

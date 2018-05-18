@@ -1,19 +1,16 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="simple_manufacture.list">
-      <field name="name">simple_manufacture list</field>
-      <field name="model">simple_manufacture.simple_manufacture</field>
+    <record id="master_component_view_tree" model="ir.ui.view">
+      <field name="name">Master Component</field>
+      <field name="model">master.component</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="estimation_time"/>
         </tree>
       </field>
     </record>
-    -->
 
     <!-- actions opening views on models -->
     <record id="master_component_action_window" model="ir.actions.act_window">
