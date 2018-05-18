@@ -32,14 +32,14 @@
                   <field name="production_detail_ids">
                     <tree editable="True">
                       <field name="component_ids"/>
-                      <field name="percent_weights" string="Percent Weights (%)"/>
+                      <field name="percent_weights" string="Percent Weights (%)" sum="Weights (%)"/>
                     </tree>
                   </field>
                 </page>
               </notebook>
-              <group>
-                <field name="sum_percent_weights" string="Sum of Weights (%)" class='oe_edit_only'/>
-              </group>
+              <!--<group>-->
+                <!--<field name="sum_percent_weights" string="Sum of Weights (%)" class='oe_edit_only'/>-->
+              <!--</group>-->
             </sheet>
         </form>
       </field>
