@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+
 class ItemProduction(models.Model):
     _name = 'item.production'
     _description = 'Item Production'
@@ -11,13 +12,15 @@ class ItemProduction(models.Model):
     date_finish = fields.Datetime()
     est_date_finish = fields.Datetime(stored=False)
     production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id')
+    sum_percent_weights = fields.Float()
 
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+    @api.multi
+    @api.onchange('production_detail_ids')
+    def _onchange_production_detail_ids(self):
+        sum_weights = 0
+        for component in self.production_detail_ids:
+            sum_weights += component.percent_weights
+        self.sum_percent_weights = sum_weights
 
 
 class ItemProductionDetail(models.Model):
