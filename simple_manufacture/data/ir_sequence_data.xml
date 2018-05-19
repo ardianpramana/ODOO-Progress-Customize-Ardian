@@ -13,5 +13,18 @@
             <field name="reset_time" eval="(datetime.today() + relativedelta(months=1)).strftime('%Y-%m-%d 00:00:00')"/>
             <field name="auto_reset" eval="True"/>
         </record>
+
+        <record id="ir_sequence_item_production" model="ir.sequence">
+            <field name="name">Item Production</field>
+            <field name="code">item.production</field>
+            <field name="implementation">standard</field>
+            <field name="prefix">ITEM/%(year)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="next_number">1</field>
+            <field name="reset_period">month</field>
+            <field name="reset_time" eval="(datetime.today() + relativedelta(months=1)).strftime('%Y-%m-%d 00:00:00')"/>
+            <field name="auto_reset" eval="True"/>
+        </record>
     </data>
 </openerp>

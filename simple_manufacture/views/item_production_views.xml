@@ -6,6 +6,7 @@
       <field name="model">item.production</field>
       <field name="arch" type="xml">
         <tree>
+          <field name="sequence_name" string="Item Code"/>
           <field name="name" string="Item Name"/>
           <field name="date_start" string="Date Start"/>
           <field name="est_date_finish" string="Due Date"/>
@@ -21,6 +22,12 @@
       <field name="arch" type="xml">
         <form string="Item Production">
             <sheet>
+              <div class="oe_title">
+                <label string="Item Production"/>
+                <h1>
+                  <field name="sequence_name" readonly="1"/>
+                </h1>
+              </div>
               <group>
                 <group>
                   <field name="name" string="Item Name"/>
@@ -36,8 +43,9 @@
                 <page string="Production details">
                   <field name="production_detail_ids">
                     <tree editable="True">
-                      <field name="component_id" string="Component Name"/>
+                      <field name="component_id" string="Component Name" options="{'no_create_edit': True}"/>
                       <field name="percent_weights" string="Percent Weights (%)" sum="Weights (%)"/>
+                      <field name="component_days" string="Estimation Days" sum="Estimation Days" readonly="True"/>
                     </tree>
                   </field>
                 </page>
