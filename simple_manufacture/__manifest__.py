@@ -28,6 +28,7 @@
         'views/master_component_views.xml',
         'views/item_production_views.xml',
         'views/templates.xml',
+        'data/ir_sequence_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
