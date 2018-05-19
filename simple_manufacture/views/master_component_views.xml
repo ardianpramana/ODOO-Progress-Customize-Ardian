@@ -55,14 +55,21 @@
     </record>
 
     <!-- Top menu item -->
-    <menuitem id="simple_manufacture_menu_root" name="Manufacture"/>
+    <menuitem id="simple_manufacture_menu_root"
+              name="Manufacture"
+              groups="simple_manufacture.group_user"/>
 
     <!-- menu categories -->
-    <menuitem id="simple_manufacture_menu" name="Manufacture" parent="simple_manufacture_menu_root"/>
+    <menuitem id="simple_manufacture_menu"
+              name="Manufacture"
+              parent="simple_manufacture_menu_root"
+              groups="simple_manufacture.group_user"/>
+
     <menuitem id="master_component_menu"
               name="Master Component"
               action="master_component_action_window"
-              parent="simple_manufacture_menu"/>
+              parent="simple_manufacture_menu"
+              groups="simple_manufacture.group_user"/>
 
   </data>
 </odoo>
