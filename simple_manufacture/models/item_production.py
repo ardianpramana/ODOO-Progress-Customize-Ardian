@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 from openerp import models, fields, api, exceptions, _
 from openerp.exceptions import ValidationError
@@ -8,17 +10,39 @@ class ItemProduction(models.Model):
     _name = 'item.production'
     _description = 'Item Production'
 
-    name = fields.Char(string='Item Name')
-    date_start = fields.Datetime(string='Date Start')
+    name = fields.Char(string='Item Name', required=True)
+    date_start = fields.Datetime(string='Date Start', required=True)
     date_finish = fields.Datetime()
-    est_date_finish = fields.Datetime(store=False)
+    est_date_finish = fields.Datetime(readonly=True, compute='_compute_est_date_finish', store=False)
+    time_delta = fields.Float(store=False, readonly=True)
     production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id')
+
+    @api.depends('time_delta', 'date_start')
+    def _compute_est_date_finish(self):
+        """
+        Calculate estimated date, based on selected component manufacturing time.
+        """
+        for rec in self:
+            component_time = 0
+            date1 = datetime.today()
+            for component in rec.production_detail_ids:
+                component_id = self.env['master.component'].search([['id', '=', component.component_id.id]])
+                component_time += component_id.estimation_time
+            rec.time_delta = component_time
+
+            if rec.time_delta:
+                date1 = (datetime.strptime(rec.date_start, '%Y-%m-%d %H:%M:%S') + relativedelta(days=component_time))
+            rec.est_date_finish = date1.isoformat(' ')
 
     @api.constrains('production_detail_ids')
     def _check_production_detail_ids(self):
         """
         Condition check before writing documents.
         """
+        if not self.production_detail_ids:
+            err_msg = _('You have to select component needed.')
+            raise ValidationError(err_msg)
+
         if not self.check_duplicate_component():
             err_msg = _('There are duplicated component selected.')
             raise ValidationError(err_msg)

@@ -26,6 +26,7 @@
                 <field name="date_start"/>
                 <field name="date_finish" string="Date Finish"/>
                 <field name="est_date_finish" string="Estimated Date Finish"/>
+                <field name="time_delta" placeholder="Estimated Date"/>
               </group>
               <notebook>
                 <page string="Production details">
