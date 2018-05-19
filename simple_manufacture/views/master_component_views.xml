@@ -6,7 +6,7 @@
       <field name="model">master.component</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
+          <field name="name" string="Component Name"/>
           <field name="estimation_time"  string="Estimation Time (Days)"/>
         </tree>
       </field>
@@ -20,7 +20,7 @@
         <form string="Master Component">
           <sheet>
             <group>
-              <field name="name"/>
+              <field name="name" string="Component Name"/>
               <field name="estimation_time" string="Estimation Time (Days)"/>
             </group>
           </sheet>

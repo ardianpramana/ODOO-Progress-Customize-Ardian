@@ -10,29 +10,28 @@ class ItemProduction(models.Model):
     _name = 'item.production'
     _description = 'Item Production'
 
-    name = fields.Char(string='Item Name', required=True)
-    date_start = fields.Datetime(string='Date Start', required=True)
+    name = fields.Char(required=True)
+    date_start = fields.Datetime(required=True)
     date_finish = fields.Datetime()
     est_date_finish = fields.Datetime(readonly=True, compute='_compute_est_date_finish', store=False)
-    time_delta = fields.Float(store=False, readonly=True)
+    # time_delta = fields.Float(store=False, readonly=True)
     production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id')
 
-    @api.depends('time_delta', 'date_start')
+    @api.depends('production_detail_ids', 'date_start')
     def _compute_est_date_finish(self):
         """
         Calculate estimated date, based on selected component manufacturing time.
         """
         for rec in self:
             component_time = 0
-            date1 = datetime.today()
+            est_date = datetime.today()
             for component in rec.production_detail_ids:
                 component_id = self.env['master.component'].search([['id', '=', component.component_id.id]])
                 component_time += component_id.estimation_time
-            rec.time_delta = component_time
 
-            if rec.time_delta:
-                date1 = (datetime.strptime(rec.date_start, '%Y-%m-%d %H:%M:%S') + relativedelta(days=component_time))
-            rec.est_date_finish = date1.isoformat(' ')
+            if component_time:
+                est_date = (datetime.strptime(rec.date_start, '%Y-%m-%d %H:%M:%S') + relativedelta(days=component_time))
+            rec.est_date_finish = est_date.isoformat(' ')
 
     @api.constrains('production_detail_ids')
     def _check_production_detail_ids(self):
@@ -82,5 +81,5 @@ class ItemProductionDetail(models.Model):
     _description = 'Item Production Detail'
 
     production_id = fields.Many2one('item.production', ondelete='cascade', required=True)
-    component_id = fields.Many2one('master.component', 'Component Name', required=True)
+    component_id = fields.Many2one('master.component', required=True)
     percent_weights = fields.Float('Percent Weight', required=True)
