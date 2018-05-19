@@ -55,6 +55,18 @@
       </field>
     </record>
 
+    <record id="item_production_view_search" model="ir.ui.view">
+      <field name="name">Item Production Search</field>
+      <field name="model">item.production</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+        <search default_order="sequence_name desc">
+          <field name="sequence_name" string="Item Code"/>
+          <field name="name" string="Item Name"/>
+        </search>
+      </field>
+    </record>
+
     <!-- actions opening views on models -->
     <record id="item_production_action_window" model="ir.actions.act_window">
       <field name="name">Item Production</field>

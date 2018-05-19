@@ -35,6 +35,18 @@
       </field>
     </record>
 
+    <record id="master_component_view_search" model="ir.ui.view">
+      <field name="name">Master Component Search</field>
+      <field name="model">master.component</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+        <search default_order="sequence_name desc">
+          <field name="sequence_name" string="Component Code"/>
+          <field name="name" string="Component Name"/>
+        </search>
+      </field>
+    </record>
+
     <!-- actions opening views on models -->
     <record id="master_component_action_window" model="ir.actions.act_window">
       <field name="name">Master Component</field>
