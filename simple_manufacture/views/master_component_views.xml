@@ -8,7 +8,7 @@
         <tree default_order="sequence_name desc">
           <field name="sequence_name" string="Component Code"/>
           <field name="name" string="Component Name"/>
-          <field name="estimation_time"  string="Estimation Time (Days)"/>
+          <field name="estimation_time"  string="Estimation Days"/>
         </tree>
       </field>
     </record>
@@ -27,10 +27,8 @@
               </h1>
             </div>
             <group>
-              <!--<field name="sequence_name" string="Component Code"/>-->
-              <field name="date" string="Date"/>
               <field name="name" string="Component Name"/>
-              <field name="estimation_time" string="Estimation Time (Days)"/>
+              <field name="estimation_time" string="Estimation Days"/>
             </group>
           </sheet>
         </form>
