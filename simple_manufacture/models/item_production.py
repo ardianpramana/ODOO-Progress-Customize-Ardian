@@ -15,7 +15,7 @@ class ItemProduction(models.Model):
     date_start = fields.Datetime(required=True)
     date_finish = fields.Datetime()
     est_date_finish = fields.Datetime(readonly=True, compute='_compute_est_date_finish', store=False)
-    production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id')
+    production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id', required=True)
 
     @api.depends('production_detail_ids', 'date_start')
     def _compute_est_date_finish(self):
