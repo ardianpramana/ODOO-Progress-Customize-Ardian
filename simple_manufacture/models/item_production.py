@@ -90,6 +90,6 @@ class ItemProductionDetail(models.Model):
     _description = 'Item Production Detail'
 
     production_id = fields.Many2one('item.production', ondelete='cascade')
-    component_id = fields.Many2one('master.component', required=True)
+    component_id = fields.Many2one('master.component', required=True, ondelete='cascade')
     component_days = fields.Integer(related='component_id.estimation_time', store=False)
     percent_weights = fields.Float('Percent Weight', required=True)
