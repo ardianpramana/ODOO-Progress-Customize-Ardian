@@ -55,7 +55,7 @@ class ItemProduction(models.Model):
         current_date = date.today().isoformat()
         if vals.get('sequence_name', 'New') == 'New':
             seq_obj = self.env['ir.sequence']
-            vals['sequence_name'] = seq_obj.with_context(ir_sequence_date=current_date).next_by_code('item.production') \
+            vals['sequence_name'] = seq_obj.sudo().with_context(ir_sequence_date=current_date).next_by_code('item.production') \
                                     or '/'
         return super(ItemProduction, self).create(vals)
 
