@@ -24,7 +24,6 @@ class ItemProduction(models.Model):
         """
         for rec in self:
             component_time = 0
-            # est_date = datetime.today()
             for component in rec.production_detail_ids:
                 component_id = self.env['master.component'].search([['id', '=', component.component_id.id]])
                 component_time += component_id.estimation_time

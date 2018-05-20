@@ -33,7 +33,6 @@
                   <field name="name" string="Item Name"/>
                   <field name="date_start" string="Date Start"/>
                   <field name="est_date_finish" string="Due Date"/>
-                  <!--<field name="time_delta" string="Due (Days)" invisible="True"/>-->
                 </group>
                 <group>
                   <field name="date_finish" string="Date Finish"/>
@@ -82,7 +81,8 @@
     <menuitem id="item_production_menu"
               name="Item Production"
               action="item_production_action_window"
-              parent="simple_manufacture_menu"/>
+              parent="simple_manufacture_menu"
+              groups="simple_manufacture.group_user"/>
 
   </data>
 </odoo>

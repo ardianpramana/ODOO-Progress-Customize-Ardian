@@ -33,6 +33,7 @@ class MasterComponent(models.Model):
         current_date = date.today().isoformat()
         if vals.get('sequence_name', 'New') == 'New':
             seq_obj = self.env['ir.sequence']
-            vals['sequence_name'] = seq_obj.with_context(ir_sequence_date=current_date).next_by_code('master.component') \
-                                    or '/'
+            vals['sequence_name'] = seq_obj.with_context(
+                                        ir_sequence_date=current_date
+                                    ).next_by_code('master.component') or '/'
         return super(MasterComponent, self).create(vals)
