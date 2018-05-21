@@ -16,3 +16,6 @@ Feature:
 
 3. Security
    * Add simple_manufacture.group_user to your User in Settings to access this module.
+
+4. Tests
+   * Add test for security group user.
