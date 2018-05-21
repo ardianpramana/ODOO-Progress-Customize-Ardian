@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="master_component_view_tree" model="ir.ui.view">
+      <field name="name">Master Component</field>
+      <field name="model">master.component</field>
+      <field name="arch" type="xml">
+        <tree default_order="sequence_name desc">
+          <field name="sequence_name" string="Component Code"/>
+          <field name="name" string="Component Name"/>
+          <field name="estimation_time"  string="Estimation Days"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="master_component_view_form" model="ir.ui.view">
+      <field name="name">Master Component</field>
+      <field name="model">master.component</field>
+      <field name="arch" type="xml">
+        <form string="Master Component">
+          <sheet>
+            <div class="oe_title">
+              <label string="Component"/>
+              <h1>
+                <field name="sequence_name" readonly="1"/>
+              </h1>
+            </div>
+            <group>
+              <field name="name" string="Component Name"/>
+              <field name="estimation_time" string="Estimation Days"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="master_component_view_search" model="ir.ui.view">
+      <field name="name">Master Component Search</field>
+      <field name="model">master.component</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+        <search default_order="sequence_name desc">
+          <field name="sequence_name" string="Component Code"/>
+          <field name="name" string="Component Name"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record id="master_component_action_window" model="ir.actions.act_window">
+      <field name="name">Master Component</field>
+      <field name="res_model">master.component</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem id="simple_manufacture_menu_root"
+              name="Manufacture"
+              groups="simple_manufacture.group_user"/>
+
+    <!-- menu categories -->
+    <menuitem id="simple_manufacture_menu"
+              name="Manufacture"
+              parent="simple_manufacture_menu_root"
+              groups="simple_manufacture.group_user"/>
+
+    <menuitem id="master_component_menu"
+              name="Master Component"
+              action="master_component_action_window"
+              parent="simple_manufacture_menu"
+              groups="simple_manufacture.group_user"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_simple-manufacture_group_user_component,access_simple-manufacture_group_user_component,model_master_component,simple_manufacture.group_user,1,1,1,1
+access_simple-manufacture_group_user_item,access_simple-manufacture_group_user_item,model_item_production,simple_manufacture.group_user,1,1,1,1
+access_simple-manufacture_group_user_item_detail,access_simple-manufacture_group_user_item_detail,model_item_production_detail,simple_manufacture.group_user,1,1,1,1
