@@ -12,7 +12,7 @@ class ItemProduction(models.Model):
 
     sequence_name = fields.Char(default='New')
     name = fields.Char(required=True)
-    date_start = fields.Datetime(required=True)
+    date_start = fields.Datetime(required=True, default=datetime.today())
     date_finish = fields.Datetime()
     est_date_finish = fields.Datetime(readonly=True, compute='_compute_est_date_finish', store=False)
     production_detail_ids = fields.One2many('item.production.detail', inverse_name='production_id', required=True)
