@@ -1,7 +1,7 @@
 # ODOO-Progress-Customize-Ardian
 
 <b>Simple Manufacture</b>
-current version in development works for Odoo-10.0
+current version works for Odoo-10.0
 
 <b>Requirement:</b>
 Please add Simple Manufacture User settings to your user account.
