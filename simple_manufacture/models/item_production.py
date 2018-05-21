@@ -45,6 +45,10 @@ class ItemProduction(models.Model):
             err_msg = _('There are duplicated component selected.')
             raise ValidationError(err_msg)
 
+        if self.check_zero_percent_weights():
+            err_msg = _('Some selected component percent weights is 0.')
+            raise ValidationError(err_msg)
+
         if not self.count_sum_percent_weights() == 100:
             err_msg = _('Total Weights (%) is not equal to 100%')
             raise ValidationError(err_msg)
@@ -67,6 +71,14 @@ class ItemProduction(models.Model):
         for component in self.production_detail_ids:
             sum_weights += component.percent_weights
         return sum_weights
+
+    def check_zero_percent_weights(self):
+        """
+        Prevent percent_weights set to 0% even the toal reach 100%
+        """
+        for component in self.production_detail_ids:
+            if not component.percent_weights > 0:
+                return True
 
     def check_duplicate_component(self):
         """
