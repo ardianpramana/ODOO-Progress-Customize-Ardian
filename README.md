@@ -3,7 +3,10 @@
 <b>Simple Manufacture</b>
 current version in development works for Odoo-10.0
 
-Feature:
+<b>Requirement:</b>
+Please add Simple Manufacture User settings to your user account.
+
+<b>Feature:</b>
 1. Master Component
    * Create master data for component,
    * Form validation,
